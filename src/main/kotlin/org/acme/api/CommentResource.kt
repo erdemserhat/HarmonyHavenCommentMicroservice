@@ -16,11 +16,13 @@ class CommentResource {
     lateinit var commentService: CommentService
 
     @GET
-    @Path("/all12")
+    @Path("/all")
     fun getAllComments(): List<Comment> {
          println()
          return commentService.getAllComments()
     }
+
+
 
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)

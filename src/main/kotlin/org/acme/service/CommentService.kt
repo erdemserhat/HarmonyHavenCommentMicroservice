@@ -3,7 +3,7 @@ package org.acme.service
 import jakarta.enterprise.context.ApplicationScoped
 import jakarta.transaction.Transactional
 import org.acme.entities.Comment
-import org.acme.data.CommentRepository
+import org.acme.repository.CommentRepository
 
 @ApplicationScoped
 class CommentService(private val commentRepository: CommentRepository) {
