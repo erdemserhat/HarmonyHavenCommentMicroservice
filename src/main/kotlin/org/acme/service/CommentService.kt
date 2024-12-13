@@ -1,8 +1,8 @@
-package org.acme
+package org.acme.service
 
 import jakarta.enterprise.context.ApplicationScoped
 import jakarta.transaction.Transactional
-import org.acme.data.Comment
+import org.acme.entities.Comment
 import org.acme.data.CommentRepository
 
 @ApplicationScoped

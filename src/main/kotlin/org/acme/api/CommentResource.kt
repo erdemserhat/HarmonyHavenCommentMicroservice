@@ -1,9 +1,11 @@
-package org.acme
+package org.acme.api
 
 import jakarta.inject.Inject
 import jakarta.ws.rs.*
 import jakarta.ws.rs.core.MediaType
-import org.acme.data.Comment
+import org.acme.dto.CommentRequest
+import org.acme.service.CommentService
+import org.acme.entities.Comment
 
 @Path("/api/v1/comments")
 @Produces(MediaType.APPLICATION_JSON)
@@ -24,7 +26,7 @@ class CommentResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @POST
     @Path("/create")
-    fun createComment(request: CommentRequest):Comment {
+    fun createComment(request: CommentRequest): Comment {
         val comment = Comment(
             authorId = request.authorId,
             quoteId = request.quoteId,
