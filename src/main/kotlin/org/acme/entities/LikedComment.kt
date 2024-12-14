@@ -1,20 +1,23 @@
 package org.acme.entities
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase
-import jakarta.persistence.Embeddable
-import jakarta.persistence.EmbeddedId
-import jakarta.persistence.Entity
-import jakarta.persistence.Table
+import jakarta.persistence.*
 import java.io.Serializable
 @Table(name = "liked_comments")
 @Entity
 data class LikedComment(
     @EmbeddedId
     var id: LikedCommentId = LikedCommentId(),
-) : PanacheEntityBase()
+) : PanacheEntityBase(){
 
-@Embeddable
-data class LikedCommentId(
-    var userId: Int?=null,
-    var commentId: Int?=null
-) : Serializable
+    @Embeddable
+    data class LikedCommentId(
+        @Column(name = "user_id", nullable = false)
+        var userId: Int?=null,
+
+        @Column(name = "comment_id", nullable = false)
+        var commentId: Int?=null
+    ) : Serializable
+
+}
+

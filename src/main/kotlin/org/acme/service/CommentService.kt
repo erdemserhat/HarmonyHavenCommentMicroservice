@@ -12,6 +12,10 @@ class CommentService(private val commentRepository: CommentRepository) {
         return commentRepository.listAll()
     }
 
+    fun getQuoteComments(quoteId:Int): List<Comment> {
+        return commentRepository.find("quoteId", quoteId).list()
+    }
+
     @Transactional
     fun createComment(comment: Comment): Comment {
         commentRepository.persist(comment)

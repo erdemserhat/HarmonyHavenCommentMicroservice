@@ -9,13 +9,18 @@ import jakarta.persistence.*
 data class Comment(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null,
+    var id: Int? = null,
 
+    @Column(name = "author_id", nullable = false)
     var authorId: Int? = null,
+
+    @Column(name = "comment_id", nullable = false)
     var quoteId: Int? = null,
 
+    @Column(name = "comment_content", nullable = false)
     var commentContent: String = "",
 
-    @OneToMany(mappedBy = "parentComment", cascade = [CascadeType.ALL], orphanRemoval = true, fetch = FetchType.LAZY)
-    var replies: MutableList<CommentReply> = mutableListOf()
-) : PanacheEntityBase()
+    @Column(name = "parent_comment_id", nullable = true)
+    var parentCommentId: Int? = null
+
+)
